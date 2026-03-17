@@ -2,7 +2,7 @@
 services:
   api:
     build:
-      context: ./backend
+      context: ./portfolio-api
       dockerfile: Dockerfile
     container_name: portfolio-api
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
 
   web:
     build:
-      context: ./frontend
+      context: ./portfolio-app
       dockerfile: Dockerfile
       args:
         VITE_API_BASE_URL: ${PRODUCTION_API_URL}

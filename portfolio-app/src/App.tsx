@@ -6,7 +6,7 @@ import { Projects } from '@/components/Projects';
 import { Skills } from '@/components/Skills';
 import { Contact } from '@/components/Contact';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
-import { Mail, Loader2, AlertTriangle } from 'lucide-react';
+import { Loader2, AlertTriangle } from 'lucide-react';
 
 function App() {
   const { data: profile, isLoading, error } = usePortfolio();

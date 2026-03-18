@@ -1,4 +1,4 @@
-@portfolio_api_HostAddress = http://localhost:5215
+@portfolio_api_HostAddress = http://mimirsbrunnr.cloud:5544
 
 GET {{portfolio_api_HostAddress}}/api/v1/profile
 Accept: application/json

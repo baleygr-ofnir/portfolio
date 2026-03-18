@@ -63,7 +63,7 @@ public class Program
                         .ToListAsync(),
             
                     Education: await db.Educations
-                        .Select(e => new EducationResponse(e.Id, e.Institution, e.Degree, e.TimeFrame, e.Status ?? "", e.Description ?? ""))
+                        .Select(e => new EducationResponse(e.Id, e.Institution, e.Degree, e.TimeFrame ?? "", e.Status ?? "", e.Description ?? ""))
                         .ToListAsync(),
             
                     Certifications: await db.Certifications
@@ -71,13 +71,13 @@ public class Program
                         .ToListAsync(),
             
                     Experience: await db.Experiences
-                        .Include(e => e.Assignments) // CRITICAL: Don't forget the include
+                        .Include(e => e.Assignments) // CRITICAL: Don't forget to include
                         .Select(e => new ExperienceResponse(
                             e.Id,
                             e.Slug,
                             e.Company,
                             e.Position,
-                            e.TimeFrame ?? "", // Fixes CS8604 null warning
+                            e.TimeFrame, // Fixes CS8604 null warning
                             e.Description,
                             e.Assignments.Select(a => new AssignmentResponse(a.Name, a.Dates, a.Task))
                         ))
@@ -107,7 +107,7 @@ public class Program
                 {
                     Text = $"TRANSMISSION LOG\n" +
                            $"----------------\n" +
-                           $"SENDER: {message.Name}\nEMAIL:{message.Email}\n" +
+                           $"SENDER: {message.Name}\nEMAIL: {message.Email}\n" +
                            $"TIME: {DateTime.UtcNow:yyyy-MM-dd HH:mm:ss} UTC\n\n" +
                            $"PAYLOAD:\n{message.Message}"
                 };

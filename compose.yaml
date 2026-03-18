@@ -22,7 +22,7 @@ services:
       - SmtpSettings__Username=${SMTP_USERNAME}
       - SmtpSettings__Password=${SMTP_PASSWORD}
 
-  web:
+  app:
     build:
       context: ./portfolio-app
       dockerfile: Dockerfile

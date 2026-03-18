@@ -88,7 +88,7 @@ public class Program
             })
             .WithName("GetProfileData");
         
-        api.MapPost("/transmit", async Task<Results<Accepted, BadRequest<string>, ProblemHttpResult>> (ContactMessage message, IConfiguration config) =>
+        api.MapPost("/transmit", async Task<Results<Accepted, BadRequest<string>, ProblemHttpResult>> (ContactMessage message, IConfiguration config, PortfolioContext db) =>
             {
                 if (string.IsNullOrWhiteSpace(message.Message))
                     return TypedResults.BadRequest("Message payload required");
@@ -112,7 +112,6 @@ public class Program
                            $"PAYLOAD:\n{message.Message}"
                 };
                 
-                
                 try
                 {
                     using var smtp = new SmtpClient();
@@ -122,6 +121,10 @@ public class Program
                     await smtp.DisconnectAsync(true);
 
                     Console.WriteLine($"[SIGNAL RELAYED SUCCESSFULLY]: {message.Email}");
+                    
+                    await db.ContactMessages.AddAsync(message);
+                    await db.SaveChangesAsync();
+                    
                     return TypedResults.Accepted(uri: string.Empty);
                 }
                 catch (Exception ex)

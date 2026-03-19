@@ -6,16 +6,20 @@ import Sitemap from 'vite-plugin-sitemap'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    Sitemap({
+            hostname: 'https://portfolio.mimirsbrunnr.cloud',
+            dynamicRoutes: [
+              '/'
+            ]
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  Sitemap({
-    hostname: 'https://portfolio.mimirsbrunnr.cloud',
-    dynamicRoutes: [
-      '/'
-    ]
-  })
+
 })

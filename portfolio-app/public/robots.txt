@@ -1,0 +1,4 @@
+Sitemap: https://portfolio.mimirsbrunnr.cloud/sitemap.xml
+User-agent: *
+Disallow: /admin/
+Allow: /

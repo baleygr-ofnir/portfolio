@@ -7,7 +7,7 @@ ARG VITE_API_BASE_URL
 # 2. MAP IT TO AN ENV SO VITE SEES IT
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
 COPY . .

@@ -47,7 +47,7 @@ function App() {
             </p>
           </div>
           <p className="mt-2 text-zinc-400 text-base max-w-2xl mx-auto leading-relaxed">
-            Transitioning from six years of professional enterprise Microsoft administration and over a decade 
+            Transitioning from five years of professional enterprise Microsoft administration and over a decade 
             of personal Linux experience into backend and systems development. <br/> Currently specialising 
             in .NET cloud architecture at IT-Högskolan.
           </p>

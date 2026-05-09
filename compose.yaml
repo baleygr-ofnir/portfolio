@@ -37,6 +37,7 @@ services:
     depends_on:
       - api
     networks:
+      - api_internal
       - npm_proxy
 
 networks:
@@ -44,3 +45,6 @@ networks:
     external: true
   psql_external:
     external: true
+  api_internal:
+    name: api_internal
+    internal: true
